@@ -21,7 +21,7 @@ db_cursor = connection.cursor()
 
 # validate user login
 def is_valid_user(username, password):
-    statement = f"select password from users where username='{username}'"
+    statement = f"select password from users where username='{username}';"
     db_cursor.execute(statement)
     result = db_cursor.fetchone()
 
@@ -37,7 +37,7 @@ def is_valid_user(username, password):
 
 # checks if user exists
 def user_exists(username):
-    statement = f"select 1 from users where username='{username}'"
+    statement = f"select 1 from users where username='{username}';"
     db_cursor.execute(statement)
     result = db_cursor.fetchone()
 
@@ -49,11 +49,11 @@ def user_exists(username):
     return False
 
 def register_user(username, password):
-    statement = f"insert into users (username, password) values ('{username}', '{password}')"
+    statement = f"insert into users (username, password) values ('{username}', '{password}');"
     db_cursor.execute(statement)
-    result = db_cursor.fetchone()
-
-    print(f"result: {result}")
+    connection.commit()
+    # result = db_cursor.fetchone()
+    # print(f"result: {result}")
 
 
 
